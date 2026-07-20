@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
 import AdminLayout from "../../Admin/AdminLayout";
 import {
   getUsers,
@@ -9,14 +8,6 @@ import {
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-=======
-import AdminLayout from "../../components/admin/AdminLayout";
-import UserTable from "../../components/admin/UserTable";
-import { getUsers } from "../../services/admin/adminUserService";
-
-const Users = () => {
-  const [users, setUsers] = useState([]);
->>>>>>> ec4c99f0041b580768c50f2f843e2572ccc10c79
   const [loading, setLoading] = useState(true);
 
   const loadUsers = async () => {
@@ -34,7 +25,6 @@ const Users = () => {
     loadUsers();
   }, []);
 
-<<<<<<< HEAD
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this user?"
@@ -59,14 +49,10 @@ const Users = () => {
   return (
     <AdminLayout>
       <div className="p-8">
-
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
-              Users
-            </h1>
-
+            <h1 className="text-3xl font-bold text-gray-800">Users</h1>
             <p className="text-gray-500">
               Total Users: {filteredUsers.length}
             </p>
@@ -83,16 +69,11 @@ const Users = () => {
 
         {/* Table */}
         <div className="bg-white rounded-xl shadow overflow-hidden">
-
           {loading ? (
-            <div className="p-8 text-center">
-              Loading Users...
-            </div>
+            <div className="p-8 text-center">Loading Users...</div>
           ) : (
             <table className="w-full">
-
               <thead className="bg-blue-600 text-white">
-
                 <tr>
                   <th className="p-4 text-left">Name</th>
                   <th className="p-4 text-left">Email</th>
@@ -101,11 +82,9 @@ const Users = () => {
                   <th className="p-4 text-left">Location</th>
                   <th className="p-4 text-center">Action</th>
                 </tr>
-
               </thead>
 
               <tbody>
-
                 {filteredUsers.length === 0 ? (
                   <tr>
                     <td
@@ -125,13 +104,9 @@ const Users = () => {
                         {user.full_name}
                       </td>
 
-                      <td className="p-4">
-                        {user.email}
-                      </td>
+                      <td className="p-4">{user.email}</td>
 
-                      <td className="p-4">
-                        {user.phone || "-"}
-                      </td>
+                      <td className="p-4">{user.phone || "-"}</td>
 
                       <td className="p-4">
                         <span
@@ -145,42 +120,24 @@ const Users = () => {
                         </span>
                       </td>
 
-                      <td className="p-4">
-                        {user.location || "-"}
-                      </td>
+                      <td className="p-4">{user.location || "-"}</td>
 
                       <td className="p-4 text-center">
-
                         <button
                           onClick={() => handleDelete(user.id)}
                           className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
                         >
                           Delete
                         </button>
-
                       </td>
                     </tr>
                   ))
                 )}
-
               </tbody>
-
             </table>
           )}
-
         </div>
       </div>
-=======
-  return (
-    <AdminLayout>
-      <h1>Users Management</h1>
-
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <UserTable users={users} refreshUsers={loadUsers} />
-      )}
->>>>>>> ec4c99f0041b580768c50f2f843e2572ccc10c79
     </AdminLayout>
   );
 };
